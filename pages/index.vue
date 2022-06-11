@@ -1,5 +1,6 @@
 <template>
-  <Tutorial />
+  <!-- <Tutorial /> -->
+  <ButtonItem />
 </template>
 
 <script>
