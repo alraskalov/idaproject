@@ -3,12 +3,13 @@
     <h1>asdasdasd</h1>
     <h1>asdasdasd</h1>
     <FormItem name="create" />
+    <ProductComp />
   </main>
 </template>
 
 <script>
 export default {
-  name: 'MainComp',
+    name: "MainComp",
 }
 </script>
 
