@@ -1,12 +1,16 @@
 <template>
   <section class="product">
-
+    <ProductCardList>
+    
+    </ProductCardList>
   </section>
 </template>
 
 <script>
+import ProductCardList from './ProductCardList.vue';
 export default {
-  name: 'ProductComp',
+    name: "ProductComp",
+    components: { ProductCardList }
 }
 </script>
 
