@@ -1,7 +1,7 @@
 <template>
   <form :name="name" novalidate class="form">
     <InputItem id="name" label="Наименование товара" placeholder="Введите наименование товара" required />
-    <InputItem id="about" label="Описание товара" placeholder="Введите описание товара" />
+    <TextAreaItem id="about" label="Описание товара" placeholder="Введите описание товара" />
     <InputItem id="url" type="url" label="Ссылка на изображение товара" placeholder="Введите ссылку" required />
     <InputItem id="price" label="Цена товара" placeholder="Введите цену" required />
     <ButtonItem />
@@ -9,11 +9,9 @@
 </template>
 
 <script>
-import ButtonItem from './ButtonItem.vue'
-import InputItem from './InputItem.vue'
+
 export default {
   name: 'FormItem',
-  components: { ButtonItem, InputItem },
   props: {
     name: {
       type: String,
