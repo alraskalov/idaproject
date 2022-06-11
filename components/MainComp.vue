@@ -17,7 +17,7 @@ export default {
 .content {
   display: grid;
   grid-gap: 1rem 1rem;
-  grid-template-columns: 440px 1fr;
+  grid-template-columns: 332px 1fr;
   grid-template-rows: auto auto;
 }
 
