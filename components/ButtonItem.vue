@@ -31,10 +31,17 @@ export default {
   width: 100%;
   height: 36px;
   padding: 0;
+
   &_active {
     background: #7BAE73;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, .1);
     color: #FFFFFF;
+    cursor: pointer;
+    transition: opacity .5s linear;
+
+    &:hover {
+      opacity: .8;
+    }
   }
 }
 </style>
