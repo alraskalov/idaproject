@@ -61,7 +61,7 @@ export default {
   width: 100%;
   margin-bottom: 1rem;
 
-  &:last-child {
+  &:nth-last-child(2) {
     margin-bottom: 1.5rem;
   }
 

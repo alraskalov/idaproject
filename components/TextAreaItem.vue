@@ -81,6 +81,7 @@ export default {
     color: #3F3F3F;
     height: 6.75rem;
     resize: none;
+    box-sizing: border-box;
   }
 }
 </style>

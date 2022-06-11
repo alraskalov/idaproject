@@ -30,8 +30,9 @@ export default {
   box-sizing: border-box;
   background: #FFFEFB;
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
-  border-radius: 4px;
-  padding: 24px;
-  width: 332px;
+  border-radius: .25rem;
+  padding: 1.5rem;
+  max-width: 332px;
+  width: 100%;
 }
 </style>

@@ -27,7 +27,8 @@ export default {
   background: #EEE;
   border-radius: .625rem;
   border: none;
-  width: 284px;
+  max-width: 284px;
+  width: 100%;
   height: 36px;
   padding: 0;
   &_active {
