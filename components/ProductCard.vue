@@ -79,6 +79,9 @@ export default {
     font-size: 1.5rem;
     line-height: 1.25;
     margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   &__text {

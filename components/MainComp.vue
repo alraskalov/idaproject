@@ -2,7 +2,7 @@
   <div class="page">
     <main class="content">
       <h2 class="content__title">Добавление товара</h2>
-      <h1>asdasdasd</h1>
+      <h1 class="content__title">asdasdasd</h1>
       <FormItem name="create" />
       <ProductComp />
     </main>
