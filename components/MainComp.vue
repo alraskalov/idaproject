@@ -2,7 +2,7 @@
   <div class="page">
     <main class="content">
       <h2 class="content__title">Добавление товара</h2>
-      <h1 class="content__title">asdasdasd</h1>
+      <SelectItem id="card-sort" :object="object" class="right" />
       <FormItem name="create" />
       <ProductComp />
     </main>
@@ -12,6 +12,9 @@
 <script>
 export default {
   name: "MainComp",
+  data() {
+    return { object: { max: 'По возрастанию цены', min: 'По убыванию цены', name: 'По имени' } }
+  }
 }
 </script>
 
@@ -19,7 +22,7 @@ export default {
 .content {
   display: grid;
   grid-gap: 1rem 1rem;
-  grid-template-columns: 332px 1fr;
+  grid-template-columns: 332px minmax(max-content, 1028px);
   grid-template-rows: auto auto;
   background: rgba(255, 254, 251, 0.8);
   text-rendering: optimizeLegibility;
@@ -42,5 +45,9 @@ export default {
   max-width: 1440px;
   min-width: 320px;
   position: relative;
+}
+
+.right {
+  justify-self: end;
 }
 </style>
