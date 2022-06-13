@@ -2,7 +2,7 @@
   <div class="page">
     <main class="content">
       <h2 class="content__title">Добавление товара</h2>
-      <SelectItem id="card-sort" :object="object" class="right" />
+      <SelectItem id="card-sort" v-model="selectedSort" class="right" />
       <FormItem name="create" />
       <ProductComp />
     </main>
@@ -10,17 +10,21 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 
 export default {
   name: "MainComp",
-  data() {
-    return { object: { max: 'По возрастанию цены', min: 'По убыванию цены', name: 'По имени' } }
+  computed: {
+    ...mapState({
+      selectedSort: (state) => state.selectedSort
+    })
   },
   mounted() {
     if (localStorage.getItem('product')) {
       this.$store.commit('INITIAL_PRODUCT', JSON.parse(localStorage.getItem('product')));
     }
-  }
+  },
+
 }
 </script>
 

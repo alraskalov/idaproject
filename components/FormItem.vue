@@ -34,8 +34,9 @@ export default {
     },
     handleSubmit(e) {
       e.preventDefault();
-      const newProduct = { id: Date.now(), name: this.values.name, about: this.values.about, url: this.values.url, price: Number(this.values.price) }
-      console.log(newProduct);
+      const {name, about, url, price} = this.values
+      const modifyName = name.charAt(0).toUpperCase() + name.slice(1);
+      const newProduct = { id: Date.now(), name: modifyName, about, url, price: Number(price) }
       this.$store.commit('SET_PRODUCT', newProduct)
       this.values = { name: '', about: '', url: '', price: '' }
     }

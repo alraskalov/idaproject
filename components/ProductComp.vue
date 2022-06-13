@@ -1,9 +1,11 @@
 <template>
   <section class="product">
-    <ProductCardList v-if="products.length > 0">
-      <ProductCard v-for="product in products" :key="product.id" :product="product" @remove="deleteCard" />
-    </ProductCardList>
-    <p v-else class="product__text">Товаров нет</p>
+  <transition-group>123</transition-group>
+      <ProductCardList v-if="$store.getters.sortedProduct.length > 0">
+        <ProductCard v-for="product in $store.getters.sortedProduct" :key="product.id" :product="product"
+          @remove="deleteCard" />
+      </ProductCardList>
+      <p v-else class="product__text">Товаров нет</p>
   </section>
 </template>
 
@@ -42,5 +44,9 @@ export default {
     color: #3F3F3F;
     margin: 0;
   }
+}
+
+.product-list-move {
+  transition: transform 1s;
 }
 </style>
