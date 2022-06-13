@@ -1,21 +1,29 @@
 <template>
   <div class="product-card">
-    <img class="product-card__img"
-      src="https://images.unsplash.com/photo-1654875659141-bc9310224933?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=744&q=80"
-      alt="Pic">
+    <img class="product-card__img" :src="product.url" :alt="product.name" />
     <div class="product-card__description description">
-      <h2 class="description__title">Наименование товара</h2>
-      <p class="description__text">Довольно-таки интересное описание товара в несколько строк. Довольно-таки
-        интересное описание товара в несколько строк</p>
-      <p class="description__price">10 000 руб.</p>
+      <h2 class="description__title">{{ product.name }}</h2>
+      <p class="description__text">{{ product.about }}</p>
+      <p class="description__price">{{ product.price }} руб.</p>
     </div>
-    <button class="product-card__btn-del"></button>
+    <button
+      class="product-card__btn-del"
+      @click="$emit('remove', product)"
+    ></button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'ProductCard',
+  props: {
+    product: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+  },
 }
 </script>
 
@@ -25,20 +33,21 @@ export default {
   display: flex;
   flex-direction: column;
   width: 332px;
-  background: #FFFEFB;
-  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
-  border-radius: .25rem;
+  background: #fffefb;
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
+    0px 6px 10px rgba(0, 0, 0, 0.02);
+  border-radius: 0.25rem;
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.25;
-  color: #3F3F3F;
+  color: #3f3f3f;
   cursor: url('~/assets/image/cursor.svg') 2 2, pointer;
 
   &__img {
-    border-top-right-radius: .25rem;
-    border-top-left-radius: .25rem;
+    border-top-right-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
     max-width: 332px;
     height: 200px;
     object-fit: cover;
@@ -52,7 +61,7 @@ export default {
   &__btn-del {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s, opacity .5s linear;
+    transition: visibility 0s, opacity 0.5s linear;
     position: absolute;
     right: -8px;
     top: -8px;
@@ -62,9 +71,9 @@ export default {
     background-position: center center;
     width: 2rem;
     height: 2rem;
-    background-color: #FF8484;
+    background-color: #ff8484;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: .625rem;
+    border-radius: 0.625rem;
     border: none;
     cursor: url('~/assets/image/cursor.svg') 2 2, pointer;
   }
