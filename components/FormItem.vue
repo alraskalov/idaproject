@@ -1,22 +1,44 @@
 <template>
-  <form :name="name" novalidate class="form">
-    <InputItem id="name" label="Наименование товара" placeholder="Введите наименование товара" required />
-    <TextAreaItem id="about" label="Описание товара" placeholder="Введите описание товара" />
-    <InputItem id="url" type="url" label="Ссылка на изображение товара" placeholder="Введите ссылку" required />
-    <InputItem id="price" label="Цена товара" placeholder="Введите цену" required />
+  <form :name="name" class="form" @submit="handleSubmit">
+    <InputItem id="name" label="Наименование товара" placeholder="Введите наименование товара" :value="values.name"
+      required @on-change="handleChange" />
+    <TextAreaItem id="about" label="Описание товара" placeholder="Введите описание товара" :value="values.about"
+      @on-change="handleChange" />
+    <InputItem id="url" type="url" label="Ссылка на изображение товара" placeholder="Введите ссылку" :value="values.url"
+      required @on-change="handleChange" />
+    <InputItem id="price" label="Цена товара" placeholder="Введите цену" :value="values.price" required
+      @on-change="handleChange" />
     <ButtonItem />
   </form>
 </template>
 
 <script>
-
 export default {
   name: 'FormItem',
   props: {
     name: {
       type: String,
-      default: "form"
+      default: 'form',
     },
+  },
+  data() {
+    return {
+      values: { name: '', about: '', url: '', price: '' },
+      product: []
+    }
+  },
+  methods: {
+    handleChange(e) {
+      const { name, value } = e.target
+      this.values = { ...this.values, [name]: value }
+    },
+    handleSubmit(e) {
+      e.preventDefault();
+      const newProduct = { id: Date.now(), name: this.values.name, about: this.values.about, url: this.values.url, price: this.values.price }
+      this.product = [...this.product, newProduct];
+      this.values = { name: '', about: '', url: '', price: '' }
+      console.log(this.product)
+    }
   },
 }
 </script>
@@ -28,9 +50,10 @@ export default {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  background: #FFFEFB;
-  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
-  border-radius: .25rem;
+  background: #fffefb;
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
+    0px 6px 10px rgba(0, 0, 0, 0.02);
+  border-radius: 0.25rem;
   padding: 1.5rem;
   max-width: 332px;
   width: 100%;
