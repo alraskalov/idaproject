@@ -1,10 +1,10 @@
 <template>
   <div class="page">
     <main class="content">
-      <h2 class="content__title">Добавление товара</h2>
+      <h2 class="content__title left">Добавление товара</h2>
       <SelectItem id="card-sort" v-model="selectedSort" class="right" />
-      <FormItem name="create" />
-      <ProductComp />
+      <FormItem class="form" name="create" />
+      <ProductComp class="product" />
     </main>
   </div>
 </template>
@@ -13,18 +13,20 @@
 import { mapState } from 'vuex'
 
 export default {
-  name: "MainComp",
+  name: 'MainComp',
   computed: {
     ...mapState({
-      selectedSort: (state) => state.selectedSort
-    })
+      selectedSort: (state) => state.selectedSort,
+    }),
   },
   mounted() {
     if (localStorage.getItem('product')) {
-      this.$store.commit('INITIAL_PRODUCT', JSON.parse(localStorage.getItem('product')));
+      this.$store.commit(
+        'INITIAL_PRODUCT',
+        JSON.parse(localStorage.getItem('product'))
+      )
     }
   },
-
 }
 </script>
 
@@ -44,7 +46,7 @@ export default {
     font-weight: 600;
     font-size: 1.75rem;
     line-height: 1.25;
-    color: #3F3F3F;
+    color: #3f3f3f;
     margin: 0;
     align-self: self-end;
   }
@@ -59,5 +61,36 @@ export default {
 
 .right {
   justify-self: end;
+}
+
+@media screen and (max-width: 750px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .left {
+    order: 1;
+  }
+
+  .form {
+    order: 2;
+  }
+
+  .right {
+    order: 3;
+  }
+
+  .product {
+    order: 4;
+  }
+
+  .content {
+    &__title {
+      align-self: center;
+    }
+  }
 }
 </style>

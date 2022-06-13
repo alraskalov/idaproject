@@ -1,7 +1,12 @@
 <template>
   <select :id="id" class="select" :name="id" @change="setSelectedSort">
     <option class="select__item" value="default" selected>По умолчанию</option>
-    <option v-for="(value, name) in options" :key="name" class="select__item" :value="name">
+    <option
+      v-for="(value, name) in options"
+      :key="name"
+      class="select__item"
+      :value="name"
+    >
       {{ value }}
     </option>
   </select>
@@ -21,7 +26,7 @@ export default {
   computed: {
     ...mapState({
       options: (state) => state.sortOptions,
-    })
+    }),
   },
   mounted() {
     this.$store.commit('SET_SELECTED_SORT', 'default')
@@ -29,9 +34,8 @@ export default {
   methods: {
     setSelectedSort(e) {
       this.$store.commit('SET_SELECTED_SORT', e.target.value)
-    }
+    },
   },
-
 }
 </script>
 

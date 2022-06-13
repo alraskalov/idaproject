@@ -1,13 +1,37 @@
 <template>
   <form :name="name" class="form" @submit="handleSubmit">
-    <InputItem id="name" label="Наименование товара" placeholder="Введите наименование товара" :value="values.name"
-      required @on-change="handleChange" />
-    <TextAreaItem id="about" label="Описание товара" placeholder="Введите описание товара" :value="values.about"
-      @on-change="handleChange" />
-    <InputItem id="url" type="url" label="Ссылка на изображение товара" placeholder="Введите ссылку" :value="values.url"
-      required @on-change="handleChange" />
-    <InputItem id="price" label="Цена товара" placeholder="Введите цену" :value="values.price" required
-      @on-change="handleChange" />
+    <InputItem
+      id="name"
+      label="Наименование товара"
+      placeholder="Введите наименование товара"
+      :value="values.name"
+      required
+      @on-change="handleChange"
+    />
+    <TextAreaItem
+      id="about"
+      label="Описание товара"
+      placeholder="Введите описание товара"
+      :value="values.about"
+      @on-change="handleChange"
+    />
+    <InputItem
+      id="url"
+      type="url"
+      label="Ссылка на изображение товара"
+      placeholder="Введите ссылку"
+      :value="values.url"
+      required
+      @on-change="handleChange"
+    />
+    <InputItem
+      id="price"
+      label="Цена товара"
+      placeholder="Введите цену"
+      :value="values.price"
+      required
+      @on-change="handleChange"
+    />
     <ButtonItem />
   </form>
 </template>
@@ -33,15 +57,21 @@ export default {
       this.values = { ...this.values, [name]: value }
     },
     handleSubmit(e) {
-      e.preventDefault();
+      e.preventDefault()
       const { name, about, url, price } = this.values
-      const modifyName = name.charAt(0).toUpperCase() + name.slice(1);
-      const newProduct = { id: Date.now(), name: modifyName, about, url, price: this.maskNumber(price) }
+      const modifyName = name.charAt(0).toUpperCase() + name.slice(1)
+      const newProduct = {
+        id: Date.now(),
+        name: modifyName,
+        about,
+        url,
+        price: this.maskNumber(price),
+      }
       this.$store.commit('SET_PRODUCT', newProduct)
       this.values = { name: '', about: '', url: '', price: '' }
     },
     maskNumber(number) {
-      return number.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+      return number.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')
     },
   },
 }
