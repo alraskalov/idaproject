@@ -34,12 +34,15 @@ export default {
     },
     handleSubmit(e) {
       e.preventDefault();
-      const {name, about, url, price} = this.values
+      const { name, about, url, price } = this.values
       const modifyName = name.charAt(0).toUpperCase() + name.slice(1);
-      const newProduct = { id: Date.now(), name: modifyName, about, url, price: Number(price) }
+      const newProduct = { id: Date.now(), name: modifyName, about, url, price: this.maskNumber(price) }
       this.$store.commit('SET_PRODUCT', newProduct)
       this.values = { name: '', about: '', url: '', price: '' }
-    }
+    },
+    maskNumber(number) {
+      return number.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+    },
   },
 }
 </script>
