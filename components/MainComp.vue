@@ -10,10 +10,16 @@
 </template>
 
 <script>
+
 export default {
   name: "MainComp",
   data() {
     return { object: { max: 'По возрастанию цены', min: 'По убыванию цены', name: 'По имени' } }
+  },
+  mounted() {
+    if (localStorage.getItem('product')) {
+      this.$store.commit('INITIAL_PRODUCT', JSON.parse(localStorage.getItem('product')));
+    }
   }
 }
 </script>

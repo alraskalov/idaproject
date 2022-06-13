@@ -1,21 +1,26 @@
 <template>
   <div class="product-card">
-    <img class="product-card__img"
-      src="https://images.unsplash.com/photo-1654875659141-bc9310224933?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=744&q=80"
-      alt="Pic">
+    <img class="product-card__img" :src="product.url" :alt="product.name">
     <div class="product-card__description description">
-      <h2 class="description__title">Наименование товара</h2>
-      <p class="description__text">Довольно-таки интересное описание товара в несколько строк. Довольно-таки
-        интересное описание товара в несколько строк</p>
-      <p class="description__price">10 000 руб.</p>
+      <h2 class="description__title">{{ product.name }}</h2>
+      <p class="description__text">{{ product.about }}</p>
+      <p class="description__price">{{ product.price }} руб.</p>
     </div>
-    <button class="product-card__btn-del"></button>
+    <button class="product-card__btn-del" @click="$emit('remove', product)"></button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'ProductCard',
+  props: {
+    product: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+  }
 }
 </script>
 

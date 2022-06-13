@@ -24,9 +24,9 @@ export default {
   data() {
     return {
       values: { name: '', about: '', url: '', price: '' },
-      product: []
     }
   },
+
   methods: {
     handleChange(e) {
       const { name, value } = e.target
@@ -34,10 +34,10 @@ export default {
     },
     handleSubmit(e) {
       e.preventDefault();
-      const newProduct = { id: Date.now(), name: this.values.name, about: this.values.about, url: this.values.url, price: this.values.price }
-      this.product = [...this.product, newProduct];
+      const newProduct = { id: Date.now(), name: this.values.name, about: this.values.about, url: this.values.url, price: Number(this.values.price) }
+      console.log(newProduct);
+      this.$store.commit('SET_PRODUCT', newProduct)
       this.values = { name: '', about: '', url: '', price: '' }
-      console.log(this.product)
     }
   },
 }

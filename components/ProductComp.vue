@@ -1,30 +1,46 @@
 <template>
   <section class="product">
-    <ProductCardList>
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+    <ProductCardList v-if="products.length > 0">
+      <ProductCard v-for="product in products" :key="product.id" :product="product" @remove="deleteCard" />
     </ProductCardList>
+    <p v-else class="product__text">Товаров нет</p>
   </section>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import ProductCardList from './ProductCardList.vue';
 import ProductCard from './ProductCard.vue';
 export default {
   name: "ProductComp",
-  components: { ProductCardList, ProductCard }
+  components: { ProductCardList, ProductCard },
+  computed: {
+    ...mapState({
+      products: (state) => state.products
+    })
+  },
+  methods: {
+    deleteCard(product) {
+      this.$store.commit('REMOVE_PRODUCT', product)
+    }
+  },
+
 }
 </script>
 
 <style lang="scss" scoped>
 .product {
   max-width: 1028px;
+
+  &__text {
+    text-align: center;
+    font-family: "Source Sans Pro";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.75rem;
+    line-height: 1.25;
+    color: #3F3F3F;
+    margin: 0;
+  }
 }
 </style>
