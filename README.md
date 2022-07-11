@@ -2,7 +2,6 @@
 
 ## **[ТЗ](https://idaproject.notion.site/Frontend-developer-test-9b834d020d8f406f851479791209beef)**
 
-
 ## Функционал
 
 + Добавление товара через форму
